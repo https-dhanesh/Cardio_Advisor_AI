@@ -1,4 +1,4 @@
-### Cardio Advisor AI
+## Cardio Advisor AI
 
 #### Cardio Advisor AI is a clinical decision support system designed to assist medical professionals in assessing cardiovascular risk.
 
@@ -49,25 +49,27 @@ Prerequisites
 - Docker (optional, for containerization)
 
 1. Clone the Repository
-
+```
 git clone [https://github.com/https-dhanesh/Cardio_Advisor_AI.git](https://github.com/https-dhanesh/Cardio_Advisor_AI.git)
 cd cardio-advisor-ai
-
+```
 
 2. Install Dependencies
 
-# Create virtual environment
+#### Create virtual environment
+```
 python -m venv venv
 source venv/bin/activate  # On Windows: venv\Scripts\activate
-
-# Install libraries
+```
+#### Install libraries
+```
 pip install -r requirements.txt
-
+```
 
 3. Run Locally
-
+```
 uvicorn app.main:app --reload
-
+```
 
 The API will be available at http://localhost:8000.
 
@@ -75,12 +77,14 @@ The API will be available at http://localhost:8000.
 
 This project is optimized for deployment on Hugging Face Spaces or any container service.
 
-# Build the image
+#### Build the image
+```
 docker build -t cardio-advisor .
-
-# Run the container
+```
+#### Run the container
+```
 docker run -p 7860:7860 cardio-advisor
-
+```
 
 #### API Usage Example
 
