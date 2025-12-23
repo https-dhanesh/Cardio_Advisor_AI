@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+
+cardio_advisor_env/
+
+*.safetensors
+*.bin
+*.pth
+*.pt
+
+data/raw/*
+data/processed/*
