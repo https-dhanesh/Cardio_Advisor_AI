@@ -1,29 +1,31 @@
-Cardio Advisor AI
+### Cardio Advisor AI
 
-Cardio Advisor AI is a clinical decision support system designed to assist medical professionals in assessing cardiovascular risk.
+#### Cardio Advisor AI is a clinical decision support system designed to assist medical professionals in assessing cardiovascular risk.
 
 It utilizes a hybrid two-stage architecture:
 
-Stage 1 (Predictive AI): Instantly calculates a risk score using XGBoost and explains the result using SHAP (Explainable AI).
+#### Stage 1 (Predictive AI): 
+Instantly calculates a risk score using XGBoost and explains the result using SHAP (Explainable AI).
 
-Stage 2 (Generative AI): Asynchronously generates a personalized clinical recommendation using a fine-tuned Llama 3 8B model and RAG (Retrieval-Augmented Generation) to reference medical guidelines.
+#### Stage 2 (Generative AI): 
+Asynchronously generates a personalized clinical recommendation using a fine-tuned Llama 3 8B model and RAG (Retrieval-Augmented Generation) to reference medical guidelines.
 
 The system is designed to be non-blocking and resource-efficient. It creates an immediate response for the user interface while the heavy LLM processing happens in the background.
 
-🚀 Features
+#### Features
 
-Real-time Prediction: Sub-second risk assessment using XGBoost.
+- Real-time Prediction: Sub-second risk assessment using XGBoost.
 
-Explainability: Detailed breakdown of why a patient is at risk using SHAP values (e.g., "High Cholesterol contributed +12% to risk").
+- Explainability: Detailed breakdown of why a patient is at risk using SHAP values (e.g., "High Cholesterol contributed +12% to risk").
 
-Medical RAG: Retrieves relevant clinical guidelines from a ChromaDB vector store based on the specific risk profile.
+- Medical RAG: Retrieves relevant clinical guidelines from a ChromaDB vector store based on the specific risk profile.
 
-Custom LLM Adapter: Uses a LoRA adapter fine-tuned on synthetic medical data to enforce a professional, concise clinical tone.
+- Custom LLM Adapter: Uses a LoRA adapter fine-tuned on synthetic medical data to enforce a professional, concise clinical tone.
 
-CPU Optimization: Deployed using GGUF quantization and llama-cpp-python to run efficiently on standard CPU hardware (Dockerized).
+- CPU Optimization: Deployed using GGUF quantization and llama-cpp-python to run efficiently on standard CPU hardware (Dockerized).
 
-📂 Project Structure
-
+#### Project Structure
+```
 cardio_advisor/
 ├── app/                     # Main application source code
 │   ├── main.py              # FastAPI entry point
@@ -36,15 +38,15 @@ cardio_advisor/
 ├── Dockerfile               # Production build configuration
 ├── requirements.txt         # Project dependencies
 └── README.md                # Project documentation
+```
 
-
-🛠️ Installation & Setup
+#### Installation & Setup
 
 Prerequisites
 
-Python 3.9+
+- Python 3.9+
 
-Docker (optional, for containerization)
+- Docker (optional, for containerization)
 
 1. Clone the Repository
 
@@ -69,7 +71,7 @@ uvicorn app.main:app --reload
 
 The API will be available at http://localhost:8000.
 
-🐳 Docker Deployment
+#### Docker Deployment
 
 This project is optimized for deployment on Hugging Face Spaces or any container service.
 
@@ -80,14 +82,14 @@ docker build -t cardio-advisor .
 docker run -p 7860:7860 cardio-advisor
 
 
-API Usage Example
+#### API Usage Example
 
 You can test the API using curl or Postman.
 
 Endpoint: POST /predict
 
-Sample Input (High Risk Patient)
-
+#### Sample Input (High Risk Patient)
+```
 {
   "age": 63,
   "sex": 1,
@@ -103,10 +105,10 @@ Sample Input (High Risk Patient)
   "ca": 0,
   "thal": 1
 }
+```
 
-
-Sample Output (JSON Response)
-
+#### Sample Output (JSON Response)
+```
 {
   "status": "success",
   "prediction": {
@@ -123,7 +125,7 @@ Sample Output (JSON Response)
   },
   "ai_advice": "High cardiac risk detected (74.8%). The patient exhibits significant ST depression (oldpeak: 2.3) and reversible defects on thalassemia scan, strongly suggesting ischemia. Immediate cardiology consultation is recommended for further evaluation, including a potential angiogram to assess coronary artery patency."
 }
-
+```
 
 License
 
